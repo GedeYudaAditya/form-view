@@ -43,6 +43,9 @@
                     <td>{{ $mahasiswa['alamat'] }}</td>
                 </tr>
             </table>
+            <div class="row">
+                <a class="btn btn-success" href="{{ route('index') }}">Back To Form</a>
+            </div>
         </div>
     </div>
 @endsection

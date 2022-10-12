@@ -18,6 +18,7 @@ class MahasiswaController extends Controller
 
     public function index()
     {
+        session()->remove('mahasiswa');
         $title = 'Form Mahasiswa';
         return view('index', compact('title'));
     }
@@ -26,7 +27,7 @@ class MahasiswaController extends Controller
     public function viewMahasiswa()
     {
         // make a colection from data
-        $mahasiswa = collect(session('mahasiswa'));
+        $mahasiswa = collect(session('mahasiswa')[0]);
         $title = 'Data Mahasiswa';
         return view('mahasiswa.index', compact('mahasiswa', 'title'));
     }
@@ -56,7 +57,7 @@ class MahasiswaController extends Controller
             'umur' => $umur,
         ];
 
-        session()->flash('mahasiswa', $data);
+        session()->push('mahasiswa', $data);
 
         return redirect()->route('mahasiswa');
     }
